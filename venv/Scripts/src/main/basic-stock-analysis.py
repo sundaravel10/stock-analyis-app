@@ -32,7 +32,7 @@ top_losers_symbols = top_losers.index.tolist()
 date = datetime.now() - relativedelta(years=1)
 dateLastYear = date.date()
 resultDf = calculate_52_wk_delta(top_losers_symbols,dateLastYear)
-resultDf = resultDf.sort_values(constants.DELTA_VALUE,ascending=True)
+resultDf = resultDf.sort_values(constants.PERCENTAGE_CHANGE,ascending=True)
 logging.info('Result DataFrame ')
 print(resultDf)
 
