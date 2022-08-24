@@ -7,6 +7,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import logging
 from Scripts.src.main import constants
+import yahoofinancials as yfin
 logging.basicConfig(level=logging.INFO,format='%(message)s')
 
 def calculate_52_wk_delta(top_losers_symbols,dateLastYear):
@@ -22,8 +23,6 @@ def calculate_52_wk_delta(top_losers_symbols,dateLastYear):
         resultDf.loc[symbol,constants.DELTA_VALUE] = fifty_two_Week_delta
         resultDf.loc[symbol,constants.PERCENTAGE_CHANGE] = ((currentValueOfStock['lastPrice'] - fifty_two_Week_high)/currentValueOfStock['lastPrice']) * 100
     return resultDf
-    
-    
 
 nse = Nse()
 top_losers_df_full = nse.top_losers(index=IndexSymbol.Nifty50,length=10)
@@ -36,9 +35,6 @@ resultDf = resultDf.sort_values(constants.PERCENTAGE_CHANGE,ascending=True)
 logging.info('Result DataFrame ')
 print(resultDf)
 
-
-
-
-
-
-
+#TO DO
+yahoo_fin = yfin.YahooFinancials('TATAMOTORS.NS')
+print(yahoo_fin.get_financial_stmts("quarterly",['income','cash','balance'],True))
