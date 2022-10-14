@@ -34,7 +34,3 @@ resultDf = calculate_52_wk_delta(top_losers_symbols,dateLastYear)
 resultDf = resultDf.sort_values(constants.PERCENTAGE_CHANGE,ascending=True)
 logging.info('Result DataFrame ')
 print(resultDf)
-
-#TO DO
-yahoo_fin = yfin.YahooFinancials('TATAMOTORS.NS')
-print(yahoo_fin.get_financial_stmts("quarterly",['income','cash','balance'],True))
